@@ -1,7 +1,3 @@
-// Example from
-// http://rattus-pubis.blogspot.no/2011/02/experimenting-with-verilator-counter.html
-//
-
 #include <iostream>
 #include <bitset>
 #include <cassert>
