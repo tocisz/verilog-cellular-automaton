@@ -11,40 +11,19 @@ module ca3(
   output wire [31:0] out
 );
 
-  ca_cell i_first(
-    .clk,
-    .rule,
-    .set_state,
-    .state(state[0]),
-    .out(out[0]),
-
-    .left,
-    .right(out[1])
-  );
-
-  genvar index;
+  genvar i;
   generate
-  for (index=1; index < 31; index=index+1)
+  for (i=0; i <= 31; i=i+1)
     ca_cell ith(
       .clk,
       .rule,
       .set_state,
-      .state(state[index]),
-      .out(out[index]),
+      .state(state[i]),
+      .out(out[i]),
 
-      .left(out[index-1]),
-      .right(out[index+1])
+      .left(i == 0 ? left : out[i-1]),
+      .right(i == 31 ? right : out[i+1])
     );
   endgenerate
 
-  ca_cell i_last(
-    .clk,
-    .rule,
-    .set_state,
-    .state(state[31]),
-    .out(out[31]),
-
-    .left(out[30]),
-    .right
-  );
 endmodule
