@@ -26,10 +26,8 @@ void testCa3() {
   print(ca, ++count);
 
   ca.set_state = 0;
-  ca.left = 0;
-  ca.right = 0;
 
-  while (count < 20) {
+  while (count < 120) {
     ca.clk = 0;
     ca.eval();
 

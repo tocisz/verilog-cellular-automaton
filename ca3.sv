@@ -2,9 +2,6 @@ module ca3(
   input wire       clk,
   input wire [7:0] rule,
 
-  input wire       left,
-  input wire       right,
-
   input wire [WIDTH-1 : 0] state,
   input wire       set_state,
 
@@ -23,8 +20,8 @@ module ca3(
       .state(state[i]),
       .out(out[i]),
 
-      .left(i == 0 ? left : out[i-1]),
-      .right(i == WIDTH-1 ? right : out[i+1])
+      .left(i == 0 ? out[WIDTH-1] : out[i-1]),
+      .right(i == WIDTH-1 ? out[0] : out[i+1])
     );
   endgenerate
 
